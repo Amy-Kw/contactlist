@@ -1,9 +1,14 @@
-export default function ContactRow({ contact }) {
-    return (
-      <tr>
-        <td>{contact.name}</td>
-        <td>{contact.email}</td>
-        <td>{contact.phone}</td>
-      </tr>
-    );
-  }
+export default function ContactRow({ bubbles, pickedId }) {
+
+  return (
+    <tr
+        onClick={() => {
+            pickId(bubbles.id)
+        }}
+    >
+        <td>{bubbles.name}</td>
+        <td>{bubbles.email}</td>
+        <td>{bubbles.phone}</td>
+    </tr>
+)
+}

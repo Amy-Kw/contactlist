@@ -1,26 +1,7 @@
-import { useState } from "react";
+import { useState } from "react"
+import {useEffect} from "react"
 import ContactRow from "./ContactRow";
-import {useEffect} from 'react'
 
-
-export default function ContactList() {
-    const [contacts, setContacts] = useState([]);
-
-useEffect(()=>{ 
-    async function fetchContacts() {
-  
-    try {
-        const response = await fetch(`https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users`);
-        const results = await response.json();
-        console.log(results);
-        
-    
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  fetchContacts()
-}, []);
 
 
 const ContactList = [
@@ -30,11 +11,35 @@ const ContactList = [
 ];
 
 
+export default function ContactList({chosenId}) //added the chosenid
+    const [contacts, setContacts] = useState([]);
+
+    useEffect(() => { 
+      async function fetchContacts() {
+  
+        try {
+          const response = await fetch("https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users");
+          console.log(`response: ${response}`)
+          const results = await response.json();
+          console.log(results);
+          setContacts(results) //addead the setContracts
+          
+      
+            } catch (error) {
+              console.error(error);
+          }
+        }
+        fetchContacts()
+    }, []);
+
+
+//you don't need the colSpan="3" for line 42 btw <th here>
+
   return (
     <table>
       <thead>
         <tr>
-          <th colSpan="3">Contact List</th>
+          <th>Contact List</th> 
         </tr>
       </thead>
       <tbody>
@@ -44,9 +49,12 @@ const ContactList = [
           <td>Phone</td>
         </tr>
         {contacts.map((contact) => {
-          return <ContactRow key={contact.id} contact={contact} />;
-        })}
+          return <ContactRow 
+          key={contact.id} 
+          bubble={contact}
+          pickId={chosenId} />; //added the pickid and chosenId
+        })
+        }
       </tbody>
     </table>
   );
-}
