@@ -6,7 +6,7 @@ import './App.css'
 
 
 export default function App() {
-  const [contacts, setContacts] = useState(ContactList)
+  const [contacts, setContacts] = useState([])
   console.log("Contacts: ", contacts)
   
   return (
