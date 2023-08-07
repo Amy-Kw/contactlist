@@ -4,6 +4,8 @@
 //import data from react
 
 import { useState, useEffect } from 'react'
+import ContactListing from './ContactList'
+import ContactRow from './ContactRow'
 
 
 export default function SelectedContact({
@@ -41,6 +43,15 @@ export default function SelectedContact({
                  <p>{contact.address?.city}</p>
                  <p>{contact.address?.zipcode}</p>
              </div>
+
+            <div>
+                <button type="button" onClick={() => {pickMyId(null)}}> Return to main page Contact
+                List
+                </button>
+            </div>
+
+
+
          </div>
      )
  }
