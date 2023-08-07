@@ -1,11 +1,20 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import { useState } from 'react'
+import ContactList from './components/ContactList';
 import './App.css'
 
 
 
 
+export default function App() {
+  const [contacts, setContacts] = useState(ContactList)
+  console.log("Contacts: ", contacts)
+  
+  return (
+    <>
+      <ContactList />
+    </>
+  );
+}
 
 
 
