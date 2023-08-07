@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import ContactList from "./components/ContactList"
 import SelectedContact from './components/pickingList';
+import ContactListing from './components/ContactList';
 
 export default function App() {
   const [selectedContactId, setSelectedContactId] = useState(null)
@@ -14,7 +15,7 @@ export default function App() {
           pickMyId={setSelectedContactId}
         />
       ) : (
-        <ContactList chosenId={setSelectedContactId}/> 
+        <ContactListing thisId={setSelectedContactId}/> 
       )}
 
     </>
@@ -48,7 +49,7 @@ export default function App() {
 //       />
 
 //     ) : (
-//       <ContactList chosenId={setSelectedContactId} />
+//       <ContactList thisId={setSelectedContactId} />
 //     )}
 //     </>
 //   )
