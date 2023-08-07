@@ -1,4 +1,4 @@
-export default function ContactRow({ bubbles, pickedId }) {
+export default function ContactRow({ bubbles, pickId }) {
 
   return (
     <tr

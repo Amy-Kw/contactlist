@@ -11,18 +11,18 @@ const ContactList = [
 ];
 
 
-export default function ContactList({chosenId}) //added the chosenid
-    const [contacts, setContacts] = useState([]);
+export default function ContactList({thisId})
+const [contacts, setContacts] = useState([])
 
-    useEffect(() => { 
+      useEffect(() => {
       async function fetchContacts() {
   
         try {
-          const response = await fetch("https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users");
+          const response = await fetch("https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/");
           console.log(`response: ${response}`)
           const results = await response.json();
           console.log(results);
-          setContacts(results) //addead the setContracts
+          setContacts(results)
           
       
             } catch (error) {
@@ -52,7 +52,7 @@ export default function ContactList({chosenId}) //added the chosenid
           return <ContactRow 
           key={contact.id} 
           bubble={contact}
-          pickId={chosenId} />; //added the pickid and chosenId
+          pickId={thisId} />;
         })
         }
       </tbody>
